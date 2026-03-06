@@ -1,0 +1,12 @@
+{
+    "name": "Lab Incidente Codespaces",
+    "image": "mcr.microsoft.com/devcontainers/python:3.12",
+    "postCreateCommand": "python -m pip install --upgrade pip && pip install -r requirements.txt && mkdir -p logs EVIDENCIA",
+    "forwardPorts": [8000],
+    "portsAttributes": {
+        "8000": {
+            "label": "Web Lab (Flask)",
+            "onAutoForward": "openBrowser"
+        }
+    }
+}
