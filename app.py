@@ -15,7 +15,7 @@ def utc_now_iso():
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 def write_line(path: str, line: str):
-    with open(path, "a", enconding="utf=8") as f:
+    with open(path, "a", encoding="utf-8") as f:
         f.write(line + "\n")
 
 @app.before_request
@@ -31,8 +31,7 @@ def log_request(response):
     line = (
         f'{utc_now_iso()} rid={rid} ip={client_ip} '
         f'method={request.method} path="{request.path}" '
-        f'status={response.status_code} dur_ms={duration_ms}
-        ua="{request.headers.get("User-Agent","-")}"'
+        f'status={response.status_code} dur_ms={duration_ms} ua="{request.headers.get("User-Agent","-")}"'
         )
     write_line(WEB_LOG, line)
     return response
